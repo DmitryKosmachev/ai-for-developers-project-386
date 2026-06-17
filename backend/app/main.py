@@ -1,12 +1,18 @@
 """FastAPI-приложение «Запись на звонок». Реализация контракта из spec/."""
 
+from pathlib import Path
+
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import FileResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 
 from app.errors import ApiException
 from app.routers import bookings, event_types, owner
+
+# Каталог собранного фронтенда (появляется в Docker-образе). В dev его нет.
+STATIC_DIR = Path(__file__).parent / "static"
 
 app = FastAPI(title="Запись на звонок API", version="1.0.0")
 
@@ -50,3 +56,22 @@ def handle_validation_error(
 app.include_router(owner.router)
 app.include_router(event_types.router)
 app.include_router(bookings.router)
+
+
+# Отдача собранного SPA с того же origin (один контейнер = API + UI на одном PORT).
+# Регистрируется ПОСЛЕ API-роутов, поэтому /owner, /event-types, /bookings имеют
+# приоритет, а всё остальное (включая клиентские маршруты /admin, /book/...) отдаёт
+# index.html.
+if STATIC_DIR.is_dir():
+    app.mount(
+        "/assets",
+        StaticFiles(directory=STATIC_DIR / "assets"),
+        name="assets",
+    )
+
+    @app.get("/{full_path:path}", include_in_schema=False)
+    def serve_spa(full_path: str) -> FileResponse:
+        candidate = STATIC_DIR / full_path
+        if full_path and candidate.is_file():
+            return FileResponse(candidate)
+        return FileResponse(STATIC_DIR / "index.html")
