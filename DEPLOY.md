@@ -33,5 +33,6 @@ docker run -e PORT=3000 -p 3000:3000 call-booking
 
 ## Публичная ссылка
 
-<!-- PROD_URL -->
-После деплоя сюда добавляется ссылка на опубликованное приложение.
+Приложение опубликовано на Render:
+
+**https://ai-for-developers-project-386-vfxy.onrender.com/**
