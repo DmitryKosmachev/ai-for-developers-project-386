@@ -1,4 +1,4 @@
-"""FastAPI-приложение «Запись на звонок». Реализация контракта из spec/."""
+"""FastAPI-приложение «Запись на созвон». Реализация контракта из spec/."""
 
 from pathlib import Path
 
@@ -14,7 +14,7 @@ from app.routers import bookings, event_types, owner
 # Каталог собранного фронтенда (появляется в Docker-образе). В dev его нет.
 STATIC_DIR = Path(__file__).parent / "static"
 
-app = FastAPI(title="Запись на звонок API", version="1.0.0")
+app = FastAPI(title="Запись на созвон API", version="1.0.0")
 
 # Фронтенд — отдельный клиент; для разработки разрешаем любые источники.
 app.add_middleware(

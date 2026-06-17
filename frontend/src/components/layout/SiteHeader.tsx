@@ -20,7 +20,7 @@ export function SiteHeader() {
           <span className="flex size-7 items-center justify-center rounded-md bg-primary text-primary-foreground">
             <CalendarClock className="size-4" />
           </span>
-          <span>Запись на звонок</span>
+          <span>Запись на созвон</span>
         </NavLink>
 
         <nav className="flex items-center gap-1">

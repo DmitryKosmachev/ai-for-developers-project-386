@@ -32,7 +32,7 @@ function OwnerHeader() {
   return (
     <div className="space-y-1">
       <h1 className="text-3xl font-bold tracking-tight">
-        Записаться на звонок к {data.name}
+        Записаться на созвон к {data.name}
       </h1>
       <p className="text-muted-foreground">
         Выберите тип встречи и удобное время. Часовой пояс: {data.timezone}.

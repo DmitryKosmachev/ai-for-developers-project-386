@@ -176,7 +176,7 @@ export interface components {
         };
         /** @description Профиль владельца календаря (единственный, только чтение). */
         Owner: {
-            /** @description Отображаемое имя владельца — «Записаться на звонок к …». */
+            /** @description Отображаемое имя владельца — «Записаться на созвон к …». */
             name: string;
             /** @description IANA-таймзона владельца, по ней считаются рабочие часы (напр. "Europe/Moscow"). */
             timezone: string;

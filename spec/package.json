@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
-  "description": "API-контракт сервиса «Запись на звонок» (Design First, TypeSpec → OpenAPI)",
+  "description": "API-контракт сервиса «Запись на созвон» (Design First, TypeSpec → OpenAPI)",
   "scripts": {
     "build": "tsp compile .",
     "watch": "tsp compile . --watch"

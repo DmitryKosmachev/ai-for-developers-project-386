@@ -5,7 +5,7 @@ import { test, expect, type Page } from '@playwright/test'
 async function openBookingAndPickSlot(page: Page): Promise<string> {
   await page.goto('/')
   await expect(
-    page.getByRole('heading', { name: /Записаться на звонок к/ }),
+    page.getByRole('heading', { name: /Записаться на созвон к/ }),
   ).toBeVisible()
 
   // На карточке типа встречи — ссылка «Записаться».
